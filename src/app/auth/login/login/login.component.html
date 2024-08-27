@@ -1,0 +1,817 @@
+<div class="body">
+    <div class="d-flex align-items-center justify-content-center height row mx-2">
+        <div class=" col-md-3 offset-md-8 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="heading text-center">
+                        <h3>Welcome Chief ..!!</h3>
+                        <p>Sign In to your account</p>
+                    </div>
+                    <form [formGroup]="loginForm">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" formControlName="email">
+
+                            <div class="text-danger position-absolute">
+                                <div *ngIf="formValidator.hasError(loginForm,'email','required')">
+                                    email is required
+                                </div>
+                                <div *ngIf="formValidator.hasError(loginForm,'email','pattern')">
+                                    email is not valid
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                formControlName="password">
+                        </div>
+                        <div class="input-group justify-content-between">
+                            <div class="mb-3 form-check col-6 ">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-label" for="exampleCheck1">Remember me?</label>
+                            </div>
+                            <div class="col-6 ms-auto text-end text-underline">
+                                <a (click)="navigateToforgetPassword()">
+                                    <u class="text-primary">
+                                        Forget Password
+                                    </u>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="text-end my-2 ">
+                        <button class="btn btn-primary " (click)="submitForm()" [disabled]="!loginForm.valid">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- 
+<div class="p-3 m-3">
+    <div class="card">
+        <div class="card-header">
+            <div class="col-3">
+                <img src="" alt="" class="img-flu">
+            </div>
+            <div class="col-9">
+                <h3>
+                    MANDATE INSTRUCTION FORM
+                </h3>
+            </div>
+           
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">UMRN</label>
+                    </div>
+                    <div class="col-9 ">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-6 row ">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">Date</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">Sponser Bank</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">Utility Code</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">I/We Here By</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">To Debit</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-2">
+                    <label for="exampleInputEmail1" class="form-label">Bank Account No</label>
+                </div>
+                <div class="col-7">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-4 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">with Bank</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-4 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">IFSC</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-4 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Or MICR</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-7 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">An amount of Rupees</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-4 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">RS</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                
+            </div>
+    
+            <div class="col-12 row mt-4">
+                <div class="col pe-0">
+                        <label class="form-check-label" for="exampleCheck1">FREQUENCY</label>
+                </div>
+                <div class="col ps-0">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Monthly</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Qty</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">H-Yearly</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">As & when presented</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">debit Type</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Fixed Amount</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Maximum Amount</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-6 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Reference-1</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Phone No.</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-6 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Reference-2</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Email Id</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-9 offset-md-2 mt-3">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">I agree for the debt of mandate processing charges by the bank whom i am authorizing to debt my account as per latest schedule of charges of the bank</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-3">
+                    <div class="card border">
+                        <div class="card-body">
+                            <div class="row mb-2">
+                                <div class="col-4">
+                                    <label for="exampleInputEmail1" class="form-label">From</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label for="exampleInputEmail1" class="form-label">To</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-9 row ">
+                    <div class="row mt-4">
+                        <div class="div col-4 px-5 ">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <p>
+                    This to inform that the declaration has been carefully read, understood and  made by me/us.I am authorizing the user entity/corporate to debit my account, based on the instructions as agreed and signed by me. I have understood  that I am authorized to cancel/amend this mandate by appropriate  communicating the cancellations/amendment request to the User entity/corporate or the bank where I have authorized debit .
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="p-3 m-3">
+    <div class="card">
+        <div class="card-header">
+            <div class="col-3">
+                <img src="" alt="" class="img-flu">
+            </div>
+            <div class="col-9">
+                <h3>
+                    MANDATE INSTRUCTION FORM
+                </h3>
+            </div>
+           
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">UMRN</label>
+                    </div>
+                    <div class="col-9 ">
+                        <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th >1</th>
+                                <th >1</th> 
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+                <div class="col-6 row ">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">Date</label>
+                    </div>
+                    <div class="col-9">
+                        <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th >1</th>
+                                <th >1</th> 
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">Sponser Bank</label>
+                    </div>
+                    <div class="col-9">
+                        <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th >1</th>
+                                <th >1</th> 
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">Utility Code</label>
+                    </div>
+                    <div class="col-9">
+                        <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th >1</th>
+                                <th >1</th> 
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">I/We Here By</label>
+                    </div>
+                    <div class="col-9">
+                       <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th >1</th>
+                                <th >1</th> 
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-3">
+                        <label for="exampleInputEmail1" class="form-label">To Debit</label>
+                    </div>
+                    <div class="col-9">
+                       <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th >1</th>
+                                <th >1</th> 
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-2">
+                    <label for="exampleInputEmail1" class="form-label">Bank Account No</label>
+                </div>
+                <div class="col-7">
+                    <table class="table table-bordered">
+                        <tbody>
+                          <tr>
+                            <th >1</th>
+                            <th >1</th> 
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                            <th >1</th>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-4 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">with Bank</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-4 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">IFSC</label>
+                    </div>
+                    <div class="col-8">
+                        <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th >1</th>
+                                <th >1</th> 
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+                <div class="col-4 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Or MICR</label>
+                    </div>
+                    <div class="col-8">
+                        <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <th >1</th>
+                                <th >1</th> 
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                                <th >1</th>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-7 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">An amount of Rupees</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-4 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">RS</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                
+            </div>
+    
+            <div class="col-12 row mt-4">
+                <div class="col pe-0">
+                        <label class="form-check-label" for="exampleCheck1">FREQUENCY</label>
+                </div>
+                <div class="col ps-0">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Monthly</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Qty</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">H-Yearly</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">As & when presented</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">debit Type</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Fixed Amount</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Maximum Amount</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-6 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Reference-1</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Phone No.</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mt-4">
+                <div class="col-6 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Reference-2</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="col-6 row">
+                    <div class="col-4">
+                        <label for="exampleInputEmail1" class="form-label">Email Id</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-9 offset-md-2 mt-3">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        
+                
+                        <label class="form-check-label" for="exampleCheck1">I agree for the debt of mandate processing charges by the bank whom i am authorizing to debt my account as per latest schedule of charges of the bank</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-3">
+                    <div class="card border">
+                        <div class="card-body">
+                            <div class="row mb-2">
+                                <div class="col-4">
+                                    <label for="exampleInputEmail1" class="form-label">From</label>
+                                </div>
+                                <div class="col-8">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                          <tr>
+                                            <th >1</th>
+                                            <th >1</th> 
+                                            <th >1</th>
+                                            <th >1</th>
+                                            <th >1</th>
+                                            <th >1</th>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label for="exampleInputEmail1" class="form-label">To</label>
+                                </div>
+                                <div class="col-8">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                          <tr>
+                                            <th >1</th>
+                                            <th >1</th> 
+                                            <th >1</th>
+                                            <th >1</th>
+                                            <th >1</th>
+                                            <th >1</th>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-9 row ">
+                    <div class="row mt-4">
+                        <div class="div col-4 px-5 ">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                        <div class="div col-4 px-5">
+                            <div class="border-bottom">
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <p>
+                    This to inform that the declaration has been carefully read, understood and  made by me/us.I am authorizing the user entity/corporate to debit my account, based on the instructions as agreed and signed by me. I have understood  that I am authorized to cancel/amend this mandate by appropriate  communicating the cancellations/amendment request to the User entity/corporate or the bank where I have authorized debit .
+                </p>
+            </div>
+
+            
+            
+        </div>
+    </div>
+</div> -->

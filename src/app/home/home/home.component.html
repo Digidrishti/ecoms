@@ -1,0 +1,51 @@
+<div class="container-fluid mt-2 ">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-sm-2  g-4">
+        <div class="col" *ngFor="let item of allProductList">
+            <div class="card">
+            <img class="mobile card-img-top rounded-3" [src]="item.image" (click)="gotoDetails(item)" alt="img">
+            <div class="card-body pe-0">
+                <div class="row me-1">
+                    <div class="col-11">
+                        <h5>{{item.categoryName}}</h5>
+                    </div>
+                    <div class="col-1 ps-0">
+                        <div class="wishlist-icons">
+                            <img src="./../../../assets/fav.svg" id="heart"  *ngIf="!item.fav"
+                                class="favbutton" (click)="wishlist(item)" alt="fav" height="18px">
+                            <img src="./../../../assets/fav_red.png" id="heart" *ngIf="item.fav"
+                                class="favbutton" (click)="unwishlist(item)" alt="fav1" height="18px">
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" text-secondary" *ngIf="item.categoryName !== 'Eggs'">
+                    500gm
+                </div>
+                <div class=" text-secondary" *ngIf="item.categoryName == 'Eggs'">
+                    1 Dozens
+                </div>
+                <div class="row pe-0 mt-2">
+                    <div class="secondary-color col-7">
+                        Discount upto {{ item.discount}}%
+                    </div>
+                    <div class="buynow col-5 ">
+                        <div class="btn btn-sm  " (click)="gotoCart(item)">
+                            BUY NOW
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <h1>sample data </h1>
+<ng-template #container></ng-template>
+<ng-template #itemTemplate let-item let-isEven="isEven">
+  <div [ngClass]="{'even': isEven, 'odd': !isEven}">
+    {{ item.id }} - {{ item.label }}
+  </div>
+</ng-template> -->

@@ -1,0 +1,342 @@
+.container {
+    background: #eee;
+    width: 80%;
+    margin: 70px 0 0 50px;
+    display: grid;
+    // lastone will take auto width
+    // grid-template-columns: 150px 200px auto;
+
+    //we can use percentage px simultaneously
+    // grid-template-columns: 50% 200px auto;
+
+    // we can also use fraction i,e it will divide parent into partition
+    // grid-template-columns: 1fr 1fr;
+
+    // we can also use fraction i,e it will divide parent into partition middle will take large panel
+    // grid-template-columns: 1fr 3fr 1fr;
+
+    // it will reapeate a grid column two times
+    // grid-template-columns: repeat(2 , 200px);
+
+    // we can also write it as 2 columns with 200px and rest third column will 50%
+    grid-template-columns: repeat(2 , 200px) 50%;
+    grid-template-columns: 50% repeat(2 , 200px) ;
+
+
+    // also we can play with row 
+
+        // grid-template-rows: repeat(2,1fr);
+        // height: 800px;
+        // gap: 20px;
+        // grid-template-rows: 150px 200px 100px;
+        // grid-template-rows: 100px 100px 100px;
+
+    // gap Css properties
+
+    // step1
+    // grid-row-gap:50px;
+    // grid-column-gap:50px;
+
+    // // step2
+    // grid-gap:30px
+
+    /*postioning in grid
+        // note activate grid lense from layout
+        overlay display settings
+        show line numbers
+        click on parent div it will show matrix with numbers
+        look at the items css properties
+    */
+        // in this we swap the first and last div
+        // to do that you to set css on that div
+        grid-template-columns: repeat(3 , 150px);
+        grid-template-rows: repeat(2 , 150px);
+        gap: 20px;
+
+
+    /*postioning in grid
+        spanning in grid i.e. it will take a span width whatever will give it to 
+    */
+
+    
+
+    /*Nameing in grid
+       instead of default grid naming as 1 2 3 we can set it as in string as shown in folloing code 
+    */
+
+        // grid-template-rows: [header-start] 120px [header-end content-start ] 200px [content-end]
+
+    /* Min Max function content 
+        automatically adjust the width of div accordingly to content inside div it will not break the word
+    */
+        // grid-template-columns: max-content 1fr 1fr 1fr min-content ;
+        // grid-template-rows: repeat(2 , minmax(150px,min-content));
+
+    // grid-template-columns: minmax(150px ,300px) 1fr 1fr 1fr min-content ;
+    // grid-template-rows: repeat(2 , minmax(150px,min-content));
+
+
+
+    /* Min Max function content 
+    */
+    // 
+    grid-template-columns : repeat(2,1fr);
+    grid-template-rows: repeat(2,120px);
+    grid-gap:15px;
+
+    // implicitly apply css on this by above code is for 2 and 2 only rest grid item will not have css at that time we can use #auto
+    grid-auto-rows: 80px;
+    grid-auto-flow:column;
+    grid-auto-columns: .5fr;
+
+
+
+     /* align item properties
+        from container all the div alignment is center if we want to 
+        align one single item to end we can do it using we need set the class into respective item
+        align-self : end;
+
+        similarly 
+        we need apply on items classs it will work on only iapplied on items 4
+        justify-self: end;
+     */
+        // align-items: center;
+        // justify-items: start;
+
+        // above two properties we can merge into one  firsr one is alingment and second one justify
+        // place-items: center start;
+
+    /*
+     Track Alignments 
+    */
+    // grid-template-columns : repeat(2,150px);
+    // grid-template-rows: repeat(2,100px);
+    // grid-gap:15px;
+    // grid-auto-rows: 50px;
+    // width:700px;
+    // height: 700px;
+    // margin: 45px auto 0;
+
+
+    // below code for alignments horizontal alignment and vertical alignment
+    
+    // justify-content: end;
+    // align-items: center;
+
+    // dense 
+    // grid-auto-flow: row dense;
+    // grid-auto-flow: column dense;
+
+
+
+     /*
+     Auto Fit
+    */
+        // below code make extra fills i.e grid items
+        // grid-template-columns : repeat(auto-fill,min(100px,1fr));
+        // grid-template-rows: repeat(2,100px);
+
+        // below code will not create fills i.e grid items and responsive grid
+        // grid-template-columns : repeat(auto-fit,minmax(150px,1fr));
+        // grid-auto-rows: 80px;
+
+        // min max is for responsive grid
+
+
+    /*
+      Fit content
+    */
+
+    // grid-template-columns : fit-content(200px) fit-content(300px) 1fr;
+    // grid-auto-rows: 80px;
+    // grid-template-rows: repeat(2,100px);
+
+
+    /*
+     order
+    */
+
+    // we can set the order to respective items
+
+    /*
+     nested-grid
+    */
+
+    grid-template-columns : repeat(2,1fr);
+    grid-auto-rows: 80px;
+    grid-template-rows: repeat(2,100px);
+
+
+
+   
+        
+
+
+}
+
+.item1 {
+    background: orangered;
+     // below code for css positioning
+        // grid-row-start: 2;
+        // grid-row-end:3;
+        // grid-column-start: 3;
+        // grid-column-end: 4;
+
+        // shorter way to write above css code
+        // grid-row: 2/3;
+        // grid-column: 3/4;
+
+        // shorter way to write below css code
+        // always start form row
+        // grid-area: 2/3/3/4;
+
+    // below css code for spanning it will 2 
+        // grid-row: 1/2;
+        // grid-column: 1/3;
+
+        // it can also add extra column 
+        // grid-row: 1/2;
+        // grid-column: 1/5;
+    
+
+        // below code for set the order  from grid we not any order and set only one div to order it fill place it last
+        order: 1;
+}
+.item2{
+    background: blue;
+
+}
+.item3{
+    background: green;
+    // it will set item to last place 
+    order: 2;
+
+    // below code for css positioning
+        // grid-row: 2/4;
+
+    // below code for fun
+        // grid-column: 1/3;
+        // z-index: 1;
+    
+        // below code for alignment
+        // grid-row: span 3;
+}
+
+.item4{
+    background: purple;
+    // below code for css positioning
+        // grid-row-start:1;
+        // grid-row-end:2;
+        // grid-column-start:2;
+        // grid-column-end:3;
+
+         // below css code for spanning it will four div
+        //  grid-row: 2/3;
+        //  grid-column: 2/4;
+
+        //  another way to write this 
+        // grid-column: 2/ span 2;
+
+        // below code for alignments
+        // align-self : end;
+        // justify-self: start;
+
+        // we can merge above code 
+        // place-self: end start;
+
+        /*
+     Auto Fit
+    */
+    // grid-column-end: -1;
+
+
+    
+
+
+}
+
+.item5{
+    background: yellow;
+
+}
+
+.item6{
+    background: tan;
+    // below code for css positioning
+        // grid-row-start:1;
+        // grid-row-end:2;
+        // grid-column-start: 1;
+        // grid-column-end: 2;
+
+        // dense example for
+        grid-column: span 2;
+}
+
+.item7{
+    background: cyan;
+    grid-column: span 2;
+}
+.item8{
+    background: pink;
+    grid-column: span 2;
+}
+
+
+// nested grids
+
+.item11{
+    background: red;
+}
+
+.item12{
+    background: green;
+}
+
+.item13{
+    background: tan;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-gap:10px;
+
+    // below currently not working
+    // .item13 > div{
+    //     background: white;
+    // }
+
+    // .item13 &div{
+    //     background: white;
+    // }
+}
+
+.item14{
+    background: cyan;
+}
+
+.item{
+    max-width:  150px;
+}
+
+.item21{
+    background: red;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    align-self: start;
+}
+
+.item22{
+    background: cyan;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    justify-self: center;
+}
+
+.item23{
+    background: yellow;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    align-self: end;
+    justify-self: end;
+}
+
